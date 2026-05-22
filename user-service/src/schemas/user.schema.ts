@@ -12,6 +12,12 @@ const REGISTER = z.object({
   .regex(/\d/, { error: "A senha deve conter números" })
 })
 
+const LOGIN = z.object({
+  email: z.string().min(1, { error: "O email é obrigatório" }),
+  password: z.string().min(1, { error: "A senha é obrigatória" })
+})
+
 export const USER_SCHEMA = {
-  REGISTER
+  REGISTER,
+  LOGIN
 }
