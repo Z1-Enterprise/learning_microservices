@@ -3,6 +3,7 @@ import { env } from "@/lib/env.ts"
 import { userRoutes } from "@/routes/index.ts"
 import { StatusCodes } from "http-status-codes"
 import z, { ZodError } from "zod"
+import fastifyJWT from "@fastify/jwt"
 
 app.get("/health", async () => {
     return {
@@ -11,6 +12,7 @@ app.get("/health", async () => {
         timeStamp: new Date().toISOString(),
     }
 })
+app.register(fastifyJWT, { secret: env.JWT_SECRET })
 app.register(userRoutes, { prefix: "/user" })
 
 app.setErrorHandler((error, request, reply) => {
