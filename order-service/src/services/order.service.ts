@@ -20,7 +20,7 @@ export class OrderService {
     return order;
   }
 
-  async getOrdersByUserId(userId: string) {
+  async getOrdersByUser(userId: string) {
     return this.orderRepository.findByUserId(userId);
   }
 }
