@@ -13,7 +13,7 @@ app.get("/health", async () => {
   };
 });
 
-app.register(orderRoutes, { prefix: "/orders" });
+app.register(orderRoutes, { prefix: "/order" });
 
 app.setErrorHandler((error, request, reply) => {
   if (error instanceof ZodError) {
