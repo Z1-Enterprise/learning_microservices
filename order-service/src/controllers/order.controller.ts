@@ -24,7 +24,7 @@ export async function createOrder(req: FastifyRequest, reply: FastifyReply) {
   }
 }
 
-export async function getOrderByID(
+export async function getOrderById(
   req: FastifyRequest<{ Params: { id: string } }>,
   reply: FastifyReply,
 ) {
