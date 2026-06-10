@@ -4,4 +4,5 @@ import type { UserCreateInput } from "@/generated/prisma/models.ts"
 export interface IUserRepository {
   findByEmail(email: string): Promise<User | null>
   create(data: UserCreateInput): Promise<User>
+  findById(id: string): Promise<User | null>
 }

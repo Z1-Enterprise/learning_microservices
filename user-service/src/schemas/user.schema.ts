@@ -17,7 +17,12 @@ const LOGIN = z.object({
   password: z.string().min(1, { error: "A senha é obrigatória" }),
 })
 
+const GET_USER_BY_ID = z.object({
+  id: z.string().min(1, { error: "O id é obrigatório" }),
+})
+
 export const USER_SCHEMA = {
   REGISTER,
   LOGIN,
+  GET_USER_BY_ID,
 }
