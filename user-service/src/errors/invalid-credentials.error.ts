@@ -1,7 +1,5 @@
-
-
 export class InvalidCredentialsError extends Error {
-    constructor() {
-        super("Credenciais inválidas")
-    }
+  constructor() {
+    super("Credenciais inválidas")
+  }
 }

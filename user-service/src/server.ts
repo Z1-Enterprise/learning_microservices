@@ -6,39 +6,39 @@ import z, { ZodError } from "zod"
 import fastifyJWT from "@fastify/jwt"
 
 app.get("/health", async () => {
-    return {
-        status: "ok",
-        service: "User Service",
-        timeStamp: new Date().toISOString(),
-    }
+  return {
+    status: "ok",
+    service: "User Service",
+    timeStamp: new Date().toISOString(),
+  }
 })
 app.register(fastifyJWT, { secret: env.JWT_SECRET })
 app.register(userRoutes, { prefix: "/user" })
 
 app.setErrorHandler((error, request, reply) => {
-    if (error instanceof ZodError) {
-        return reply.status(StatusCodes.BAD_REQUEST).send({
-            success: false,
-            message: z.treeifyError(error),
-        })
-    }
-    return reply.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
-        success: false,
-        message: "INTERNAL_SERVER_ERROR",
+  if (error instanceof ZodError) {
+    return reply.status(StatusCodes.BAD_REQUEST).send({
+      success: false,
+      message: z.treeifyError(error),
     })
+  }
+  return reply.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+    success: false,
+    message: "INTERNAL_SERVER_ERROR",
+  })
 })
 
 const start = async () => {
-    try {
-        app.listen({
-            port: env.PORT,
-            host: "0.0.0.0",
-        })
-        console.log(`HTTP Server running`)
-    } catch (error) {
-        console.error(error)
-        process.exit(1)
-    }
+  try {
+    app.listen({
+      port: env.PORT,
+      host: "0.0.0.0",
+    })
+    console.log(`HTTP Server running`)
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
 }
 
 start()

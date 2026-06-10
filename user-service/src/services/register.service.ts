@@ -13,7 +13,6 @@ interface RegisterServiceResponse {
   user: User
 }
 
-
 export class RegisterService {
   constructor(private readonly userRepository: UserRepository) {}
 
@@ -32,7 +31,7 @@ export class RegisterService {
     })
 
     return {
-      user
+      user,
     }
   }
 }
