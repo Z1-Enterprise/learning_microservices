@@ -16,7 +16,7 @@ export const login = async (request: FastifyRequest, reply: FastifyReply) => {
     const { email, password } = data
     const { user } = await new LoginService(new UserRepository()).execute({ email, password })
     const token = await reply.jwtSign({ userId: user.id })
-    return reply.status(StatusCodes.OK).send({ success: true, token, user })
+    return reply.status(StatusCodes.OK).send({ success: true, token })
   } catch (error) {
     if (error instanceof ResourceNotFoundError) {
       return reply.status(StatusCodes.NOT_FOUND).send({ success: false, message: error.message })
