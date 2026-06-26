@@ -14,7 +14,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noEmit": true,
+    "noEmit": false,
     "allowImportingTsExtensions": true
   }
 }

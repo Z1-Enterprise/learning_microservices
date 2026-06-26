@@ -6,5 +6,5 @@ import { getUserById } from "@/controllers/get-user-by-id.controller.ts"
 export const userRoutes = async (app: FastifyInstance) => {
   app.post("/register", register)
   app.post("/login", login)
-  app.get("/user/:id", getUserById)
+  app.get("/:id", getUserById)
 }
