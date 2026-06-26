@@ -8,8 +8,8 @@ export class OrderService {
   constructor(private orderRepository: IOrderRepository) {}
 
   async createOrder(data: CreateOrderInput) {
-    // const user = await findUserById(data.userId);
-    // if (!user) throw new UserNotFoundError();
+    const user = await findUserById(data.userId);
+    if (!user) throw new UserNotFoundError();
 
     return this.orderRepository.create(data);
   }
